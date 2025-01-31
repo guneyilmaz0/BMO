@@ -3,6 +3,7 @@ package net.guneyilmaz0.bmo.command
 import kotlinx.coroutines.coroutineScope
 import net.dv8tion.jda.api.entities.Guild
 import net.dv8tion.jda.api.interactions.commands.Command
+import net.guneyilmaz0.bmo.command.commands.*
 import java.util.function.Consumer
 
 class ICommandManager {
@@ -15,6 +16,8 @@ class ICommandManager {
             coroutineScope {
                 Companion.guild = guild
 
+                // Register commands
+                registerCommand(AvatarCommand("avatar", "Shows the avatar of the user"))
 
                 guild.retrieveCommands().queue((Consumer<List<Command>> { guildCommands: List<Command> ->
                     for (command in guildCommands) if (!commands.containsKey(command.name)) guild.deleteCommandById(
