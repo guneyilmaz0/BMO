@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "2.0.21"
+    kotlin("jvm") version "1.9.23"
 }
 
 group = "net.guneyilmaz0.bmo"
@@ -7,7 +7,7 @@ version = "1.0.0-build.1"
 description = "BMO BOT!"
 
 kotlin {
-    jvmToolchain(23)
+    jvmToolchain(21)
 }
 
 repositories {
@@ -16,7 +16,8 @@ repositories {
 }
 
 dependencies {
-    implementation("net.dv8tion:JDA:5.0.0-beta.24") { exclude(module = "opus-java") }
+    implementation("net.dv8tion:JDA:5.0.0-beta.24")
+    implementation("dev.arbjerg:lavaplayer:2.2.2")
     implementation("com.github.guneyilmaz0:MongoS:4.2.3")
 }
 
