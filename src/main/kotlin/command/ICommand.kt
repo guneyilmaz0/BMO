@@ -34,16 +34,11 @@ abstract class ICommand(val name: String) {
     fun testPermission(message: Message): Boolean {
         if (testPermissionSilent(message)) return true
 
-        return if (permissionMessage.isEmpty()) {
-            message.channel.sendMessage("Command not found.").queue()
-            false
-        } else {
-            message.channel.sendMessage(permissionMessage.replace("<permission>", permission?.name ?: "")).queue()
-            false
-        }
+        val response = if (permissionMessage.isEmpty()) "Command not found."
+        else permissionMessage.replace("<permission>", permission?.name ?: "")
+        message.channel.sendMessage(response).queue()
+        return false
     }
 
-    private fun testPermissionSilent(message: Message): Boolean {
-        return permission?.let { message.member?.hasPermission(it) ?: false } ?: true
-    }
+    private fun testPermissionSilent(message: Message) = permission?.let { message.member?.hasPermission(it) } ?: true
 }
