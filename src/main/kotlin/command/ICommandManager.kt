@@ -19,6 +19,7 @@ class ICommandManager {
                 // Register commands
                 registerCommand(AvatarCommand("avatar", "Shows the avatar of the user"))
                 registerCommand(ClearCommand("clear", "Deletes messages in a channel"))
+                registerCommand(KickCommand("kick", "Kicks a member from the server"))
 
                 guild.retrieveCommands().queue((Consumer<List<Command>> { guildCommands: List<Command> ->
                     for (command in guildCommands) if (!commands.containsKey(command.name)) guild.deleteCommandById(
