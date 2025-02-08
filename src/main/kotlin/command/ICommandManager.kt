@@ -18,7 +18,9 @@ class ICommandManager {
 
                 // Register commands
                 registerCommand(AvatarCommand("avatar", "Shows the avatar of the user"))
+                registerCommand(BanCommand("ban", "Bans a user from the server"))
                 registerCommand(ClearCommand("clear", "Deletes messages in a channel"))
+                registerCommand(CoinFlipCommand("coinflip", "Flips a coin and shows the result"))
                 registerCommand(KickCommand("kick", "Kicks a member from the server"))
 
                 guild.retrieveCommands().queue((Consumer<List<Command>> { guildCommands: List<Command> ->
